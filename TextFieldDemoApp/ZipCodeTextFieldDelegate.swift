@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ZipCodeTextFieldDelegate : NSObject, UITextFieldDelegate {
-
+    
     func containsOnlyNumbers(_ string: String) -> Bool {
         let numbers = "0123456789"
         for char in string.characters {
@@ -20,6 +20,7 @@ class ZipCodeTextFieldDelegate : NSObject, UITextFieldDelegate {
         }
         return true
     }
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         // As long as the replacement string contains only numbers

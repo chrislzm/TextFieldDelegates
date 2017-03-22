@@ -11,6 +11,7 @@ import UIKit
 
 class CashTextFieldDelegate : NSObject, UITextFieldDelegate {
     
+    // Returns a true if the string contains only numbers or $ , .
     func containsOnlyMoneySymbols(_ string: String) -> Bool {
         let moneySymbols = "0123456789$.,"
         for char in string.characters {
@@ -21,7 +22,8 @@ class CashTextFieldDelegate : NSObject, UITextFieldDelegate {
         return true
     }
 
-    func moneyFormat(_ string: String) -> String {
+    // Extracts numbers from a string and returns it string formatted in US currency
+    func formatInUSCurrency(_ string: String) -> String {
         let numbers = "0123456789"
         var numbersOnly = String()
         
@@ -32,9 +34,8 @@ class CashTextFieldDelegate : NSObject, UITextFieldDelegate {
             }
         }
         
-        // Remove leading 0's
+        // Get total cents by counting leading 0's (if any) and extracting the substring
         var leadingZerosFound = 0
-        
         for char in numbersOnly.characters {
             if char == "0" {
                 leadingZerosFound += 1
@@ -42,31 +43,34 @@ class CashTextFieldDelegate : NSObject, UITextFieldDelegate {
                 break
             }
         }
-        
         let index = numbersOnly.index(numbersOnly.startIndex, offsetBy: leadingZerosFound)
         let cents = numbersOnly.substring(from: index)
         let digits = cents.characters.count
-        
+
+        // Will store final formatted string
         var dollars = cents
         
-        // If we have more than 5 digits, insert commas at the proper locations
+        // If cents occupy more than 5 digits, we need to insert commas
         if digits > 5 {
+            // Set insert position initally at the $1,000.00 mark
             var insertPosition = 5
+            
+            // While we still have space left to insert commas
             while insertPosition < dollars.characters.count {
                 dollars.insert(",", at: dollars.index(dollars.endIndex, offsetBy: -1*insertPosition))
+                
+                // Increment by 4 since we are skipping 3 digits AND a comma
                 insertPosition += 4
             }
         }
-            
-        // If we have 2 digits or less, then add leading zeros
+        // Otherwise, if cents occupy 2 digits or less, then add leading zeroes as needed
         else if digits <= 2 {
             for _ in 1...3-digits {
                 dollars = "0" + dollars
             }
         }
         
-        
-        // Insert period and dollar signs at correct positions
+        // Finally, insert period and dollar signs at correct positions
         dollars.insert(".", at: dollars.index(dollars.endIndex, offsetBy: -2))
         dollars.insert("$", at: dollars.startIndex)
      
@@ -85,7 +89,7 @@ class CashTextFieldDelegate : NSObject, UITextFieldDelegate {
         }
         
         // Create our own custom string based on the resulting string
-        textField.text = moneyFormat(newString)
+        textField.text = formatInUSCurrency(newString)
         
         // Don't accept the proposed change, as we've formatted it the way we want it already
         return false

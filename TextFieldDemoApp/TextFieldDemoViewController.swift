@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldDemoViewController: UIViewController {
+class TextFieldDemoViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Outlets
     @IBOutlet weak var zipCodeTextField: UITextField!
@@ -17,8 +17,8 @@ class TextFieldDemoViewController: UIViewController {
 
     // MARK: Text Field Delegate objects
     let zipCodeDelegate = ZipCodeTextFieldDelegate()
-    let cashDelegate = CashTextFieldDelegate()
-    let lockableDelegate = LockableTextFieldDelegate()
+    //let cashDelegate = CashTextFieldDelegate()
+    let cashDelegate =  AlternateCashTextFieldDelegate()
     
     // MARK: Other properties
     var locked = true // Assumes switch has been set to on in storyboard
@@ -27,12 +27,19 @@ class TextFieldDemoViewController: UIViewController {
         super.viewDidLoad()
         self.zipCodeTextField.delegate = zipCodeDelegate
         self.cashTextField.delegate = cashDelegate
-        self.lockableTextField.delegate = lockableDelegate
+        self.lockableTextField.delegate = self
     }
     
     @IBAction func toggleLock(_ sender: AnyObject) {
         let theSwitch = sender as! UISwitch
         locked = theSwitch.isOn
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if locked {
+            return true
+        }
+        return false
     }
 
 }

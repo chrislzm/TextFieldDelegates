@@ -14,7 +14,7 @@
 		A53F2DB71E8233EE00035C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53F2DB51E8233EE00035C22 /* LaunchScreen.storyboard */; };
 		A53F2DC01E82344B00035C22 /* ZipCodeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2DBF1E82344B00035C22 /* ZipCodeTextFieldDelegate.swift */; };
 		A53F2DC21E82345800035C22 /* CashTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2DC11E82345800035C22 /* CashTextFieldDelegate.swift */; };
-		A53F2DC41E82346400035C22 /* LockableTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2DC31E82346400035C22 /* LockableTextFieldDelegate.swift */; };
+		A53F2DC81E825A8000035C22 /* AlternateCashTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2DC71E825A8000035C22 /* AlternateCashTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		A53F2DB81E8233EE00035C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A53F2DBF1E82344B00035C22 /* ZipCodeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeTextFieldDelegate.swift; sourceTree = "<group>"; };
 		A53F2DC11E82345800035C22 /* CashTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashTextFieldDelegate.swift; sourceTree = "<group>"; };
-		A53F2DC31E82346400035C22 /* LockableTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockableTextFieldDelegate.swift; sourceTree = "<group>"; };
+		A53F2DC71E825A8000035C22 /* AlternateCashTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternateCashTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			children = (
 				A53F2DBF1E82344B00035C22 /* ZipCodeTextFieldDelegate.swift */,
 				A53F2DC11E82345800035C22 /* CashTextFieldDelegate.swift */,
-				A53F2DC31E82346400035C22 /* LockableTextFieldDelegate.swift */,
+				A53F2DC71E825A8000035C22 /* AlternateCashTextFieldDelegate.swift */,
 			);
 			name = "Text Field Delegates";
 			sourceTree = "<group>";
@@ -154,10 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A53F2DC41E82346400035C22 /* LockableTextFieldDelegate.swift in Sources */,
 				A53F2DC01E82344B00035C22 /* ZipCodeTextFieldDelegate.swift in Sources */,
 				A53F2DC21E82345800035C22 /* CashTextFieldDelegate.swift in Sources */,
 				A53F2DAF1E8233EE00035C22 /* TextFieldDemoViewController.swift in Sources */,
+				A53F2DC81E825A8000035C22 /* AlternateCashTextFieldDelegate.swift in Sources */,
 				A53F2DAD1E8233EE00035C22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

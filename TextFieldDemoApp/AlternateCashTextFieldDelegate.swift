@@ -22,8 +22,8 @@ class AlternateCashTextFieldDelegate : NSObject, UITextFieldDelegate {
         return true
     }
     
-    // Extracts numbers from a string and returns it string formatted in US currency
-    func getCents(_ string: String) -> Double {
+    // Extracts numbers from a string and returns it as dollars with cents with double precision
+    func getDollars(_ string: String) -> Double {
         let numbers = "0123456789"
         var centsOnly = String()
         
@@ -34,20 +34,26 @@ class AlternateCashTextFieldDelegate : NSObject, UITextFieldDelegate {
             }
         }
 
+        // Return the value in dollars as a double
         return Double(centsOnly)!/100.0
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        // Get the resulting string
+        // Get the string resulting from the change
         let text = textField.text! as NSString
         let newString = text.replacingCharacters(in: range, with: string) as String
         
+        // If the change results in a string that contains only money symbols (numbers and $,.)
         if containsOnlyMoneySymbols(newString) {
-            let cents = getCents(newString) as NSNumber
+            
+            // Get the amount in cents
+            let dollars = getDollars(newString) as NSNumber
+            
+            // Set text field to the formatted value in currency
             let formatter = NumberFormatter()
             formatter.numberStyle = .currency
-            textField.text = formatter.string(from: cents)
+            textField.text = formatter.string(from: dollars)
         }
         
         return false

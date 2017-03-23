@@ -17,8 +17,8 @@ class TextFieldDemoViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Text Field Delegate objects
     let zipCodeDelegate = ZipCodeTextFieldDelegate()
-    //let cashDelegate = CashTextFieldDelegate()
-    let cashDelegate =  AlternateCashTextFieldDelegate()
+    let cashDelegate = CashTextFieldDelegate()
+    //let cashDelegate =  AlternateCashTextFieldDelegate()
     
     // MARK: Other properties
     var locked = true // Assumes switch has been set to on in storyboard
